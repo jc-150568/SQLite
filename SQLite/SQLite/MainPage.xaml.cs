@@ -98,53 +98,6 @@ namespace SQLite
         //insertイベントハンドラ
         void InsertClicked(object sender, EventArgs e)
         {
-            var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
-
-            //-------------------------------insertします-------------------------------
-            var Insert = new Button
-            {
-                WidthRequest = 60,
-                Text = "Insert!",
-                TextColor = Color.Red,
-            };
-            insertEntry = new Entry
-            {
-                WidthRequest = 60
-            };
-            layout.Children.Add(Insert);
-            Insert.Clicked += InsertClicked;
-            layout.Children.Add(insertEntry);
-
-            //--------------------------------deleteします------------------------------
-            var Delete = new Button
-            {
-                WidthRequest = 60,
-                Text = "Delete!",
-                TextColor = Color.Red,
-            };
-            layout.Children.Add(Delete);
-            Delete.Clicked += DeleteClicked;
-            /*
-            deleteEntry = new Entry
-            {
-                WidthRequest = 60,
-            };
-                        layout.Children.Add(deleteEntry);
-            deleteId = int.Parse(deleteEntry.Text);
-            */
-
-            //--------------------------------selectします------------------------------
-            var Select = new Button
-            {
-                WidthRequest = 60,
-                Text = "Select!",
-                TextColor = Color.Red,
-            };
-            layout.Children.Add(Select);
-            Select.Clicked += SelectClicked;
-
-            Content = layout;
-
 
             var InsertName = insertEntry.Text;
             //Userテーブルに適当なデータを追加する
@@ -163,60 +116,57 @@ namespace SQLite
         //selectイベントハンドラ
         void SelectClicked(object sender, EventArgs e)
         {
-            var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
-            var Insert = new Button
-            {
-                WidthRequest = 60,
-                Text = "Insert!",
-                TextColor = Color.Red,
-            };
-            insertEntry = new Entry
-            {
-                WidthRequest = 60
-            };
-            layout.Children.Add(Insert);
-            Insert.Clicked += InsertClicked;
-            layout.Children.Add(insertEntry);
-
-            //--------------------------------deleteします------------------------------
-            var Delete = new Button
-            {
-                WidthRequest = 60,
-                Text = "Delete!",
-                TextColor = Color.Red,
-            };
-            layout.Children.Add(Delete);
-            Delete.Clicked += DeleteClicked;
-            /*
-            deleteEntry = new Entry
-            {
-                WidthRequest = 60,
-            };
-                        layout.Children.Add(deleteEntry);
-            deleteId = int.Parse(deleteEntry.Text);
-            */
-
-            //--------------------------------selectします------------------------------
-            var Select = new Button
-            {
-                WidthRequest = 60,
-                Text = "Select!",
-                TextColor = Color.Red,
-            };
-            layout.Children.Add(Select);
-            Select.Clicked += SelectClicked;
-
-            var InsertName = insertEntry.Text;
-            //Userテーブルに適当なデータを追加する
-            UserModel.insertUser(InsertName);
 
             //Userテーブルの行データを取得
             var query = UserModel.selectUser(); //中身はSELECT * FROM [User]
-            
+            var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
             foreach (var user in query)
             {
                 //Userテーブルの名前列をLabelに書き出す
                 layout.Children.Add(new Label { Text = user.Name });
+
+                //-------------------------------insertします-------------------------------
+                var Insert = new Button
+                {
+                    WidthRequest = 60,
+                    Text = "Insert!",
+                    TextColor = Color.Red,
+                };
+                insertEntry = new Entry
+                {
+                    WidthRequest = 60
+                };
+                layout.Children.Add(Insert);
+                Insert.Clicked += InsertClicked;
+                layout.Children.Add(insertEntry);
+
+                //--------------------------------deleteします------------------------------
+                var Delete = new Button
+                {
+                    WidthRequest = 60,
+                    Text = "Delete!",
+                    TextColor = Color.Red,
+                };
+                layout.Children.Add(Delete);
+                Delete.Clicked += DeleteClicked;
+                /*
+                deleteEntry = new Entry
+                {
+                    WidthRequest = 60,
+                };
+                            layout.Children.Add(deleteEntry);
+                deleteId = int.Parse(deleteEntry.Text);
+                */
+
+                //--------------------------------selectします------------------------------
+                var Select = new Button
+                {
+                    WidthRequest = 60,
+                    Text = "Select!",
+                    TextColor = Color.Red,
+                };
+                layout.Children.Add(Select);
+                Select.Clicked += SelectClicked;
             }
             Content = layout;
 
