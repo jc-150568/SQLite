@@ -7,7 +7,7 @@ using SQLite;
 
 namespace SQLite
 {
-    //テーブル名を指定
+    //テーブル名を指定a
     [Table("User")]
     public class UserModel
     {
