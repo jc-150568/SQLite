@@ -5,9 +5,9 @@
              x:Class="SQLite.MainPage">
     <ContentPage.Content>
         <StackLayout>
-          <Button Image="SampleISBN.png"
+          <Button Label="aaa"
             Clicked="ScanButtonClicked"
-            HorizontalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand" />
          </StackLayout>
     </ContentPage.Content>
